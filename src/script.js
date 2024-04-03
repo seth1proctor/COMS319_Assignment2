@@ -4,7 +4,7 @@ export function App() {
     const [View, setView] = useState(0);
 
     function Browse(){
-        return(<div>brose</div>)
+        return(<div>bros</div>)
     }
     
     function Cart() {
