@@ -2,6 +2,8 @@ import react, {useState} from "react";
 
 export function App() {
     const [View, setView] = useState(0);
+    const [Cart, setCart] = useState([]);
+    const [CartTotal, setCartTotal] = useState(0);
 
     function Browse(){
         return(<div>bros</div>)
