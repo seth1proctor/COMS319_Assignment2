@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {browse, cart, confirm} from './script.js';
+import {App} from './script.js';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <browse />
-    <cart />
-    <confirm />
+    <App />
   </React.StrictMode>
 );
