@@ -28,30 +28,30 @@
     },
     {
       "id": 4,
-      "title": "Mens Casual Slim Fit",
-      "price": 15.99,
-      "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-      "rating": { "rate": 2.1, "count": 430 }
+      "title": "2002 Toyota Camry",
+      "price": 5015.99,
+      "description": "The 2002 Toyota Camry is a midsize sedan that embodies reliability, comfort, and practicality. With its sleek and timeless design, the Camry maintains a classic appearance that appeals to a wide range of drivers. Its exterior features smooth lines, a modest grille, and large headlights, giving it a sophisticated yet understated look.",
+      "make": "Toyota",
+      "image": "https://file.kelleybluebookimages.com/kbb/base/house/2002/2002-Toyota-Camry-FrontSide_TOCAMLE021_505x375.jpg?interpolation=high-quality&downsize=303:*",
+      "rating": { "rate": 5.0, "count": 630 }
     },
     {
       "id": 5,
-      "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-      "price": 695,
-      "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
-      "rating": { "rate": 4.6, "count": 400 }
+      "title": "McLaren F1",
+      "price": 800000,
+      "description": "The McLaren F1, introduced in 1992, remains one of the most iconic and revered supercars in automotive history. Designed by Gordon Murray and manufactured by McLaren Automotive, the F1 was ahead of its time in terms of performance, engineering, and innovation.",
+      "make": "McLaren",
+      "image": "https://robbreport.com/wp-content/uploads/2019/12/6092563g.jpg?w=1000",
+      "rating": { "rate": 2.2, "count": 400 }
     },
     {
       "id": 6,
-      "title": "Solid Gold Petite Micropave ",
-      "price": 168,
-      "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-      "rating": { "rate": 3.9, "count": 70 }
+      "title": "2018 Mclaren 570S MSO X",
+      "price": 450000,
+      "description": "The 2018 McLaren 570S MSO X is a limited-edition variant of the already impressive McLaren 570S sports car, crafted by McLaren Special Operations (MSO), the bespoke division of McLaren Automotive. This exclusive model was designed specifically for North American customers, with only ten units produced, making it highly sought after among collectors and enthusiasts.",
+      "make": "McLaren",
+      "image": "https://www.ilusso.com/imagetag/1312/main/l/Used-2018-McLaren-MSO-X-1688439859.jpg",
+      "rating": { "rate": 1.1, "count": 70 }
     }
   ]
   
