@@ -13,20 +13,20 @@ export function App() {
     const [CartList, setCartList] = useState([]);
     const [CartTotal, setCartTotal] = useState(0);
 
+    //helper method to list all of the items in the cart out
+    const cartItems = CartList.map((el) => (
+        <div key={el.id}>
+            <img class="img-fluid" src={el.image} width={150} />
+            {el.title}
+            ${el.price}
+        </div>
+    ));
 
     function Browse() {
         return (<div>bros</div>)
     }
 
     function Cart() {
-
-        const cartItems = CartList.map((el) => (
-            <div key={el.id}>
-                <img class="img-fluid" src={el.image} width={150} />
-                {el.title}
-                ${el.price}
-            </div>
-        ));
 
         function Payment() {
             const onSubmit = data => {
@@ -87,9 +87,6 @@ export function App() {
             );
         }
 
-
-
-
         return (<div>
             <button type="primary" className="btn btn-primary" onClick={setViewBrowse}>Return</button>
 
@@ -120,9 +117,67 @@ export function App() {
     }
 
     function Confirm() {
+        const redactCreditCard = (creditCard) => {
+            // If credit card data is not available or invalid, return empty string
+            if (!creditCard || typeof creditCard !== 'string') {
+                return '';
+            }
+            // Redact the first 12 digits and replace them with asterisks
+            const redactedPart = creditCard.slice(0, -12).replace(/\d/g, '*');
+            // Keep the last 4 digits unredacted
+            const last4Digits = creditCard.slice(-4);
+            // Return the redacted part followed by the last 4 digits
+            return redactedPart + last4Digits;
+        };
 
-        return (<div>Confirm</div>)
 
+        return (<div className="container">
+            <h1>Payment Confirmation</h1>
+            <div>
+                <p><strong>Full Name:</strong> {dataF.fullName}</p>
+                <p><strong>Email:</strong> {dataF.email}</p>
+                <p><strong>Credit Card:</strong> {redactCreditCard(dataF.creditCard)}</p>
+                <p><strong>Address:</strong> {dataF.address}</p>
+                <p><strong>Address 2:</strong> {dataF.address2}</p>
+                <p><strong>City:</strong> {dataF.city}</p>
+                <p><strong>State:</strong> {dataF.state}</p>
+                <p><strong>Zip:</strong> {dataF.zip}</p>
+
+                <hr className="my-4" />
+
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col">
+                                <h4>
+                                    <b>Shopping Cart</b>
+                                </h4>
+                            </div>
+                            <div class="col align-self-center text-right text-muted">
+                                Products selected {CartList.length}
+                            </div>
+                        </div>
+                    </div>
+                    <div>{cartItems}</div>
+                </div>
+                <div class="float-end">
+                    <p class="mb-0 me-5 d-flex align-items-center">
+                        <span class="small text-muted me-2">Order total:</span>
+                        <span class="lead fw-normal">${CartTotal}</span>
+                    </p>
+                </div>
+            </div>
+            <button type="primary" className="btn btn-primary" onClick={checkout}>Confirm Purchase</button>
+            <button type="primary" className="btn btn-primary" onClick={setViewCart}>Edit Payment Information</button>
+            
+        </div>)
+
+    }
+
+    const checkout = () => {
+        setDataF([]);
+        setCartList([]);
+        setView(0);
     }
 
     const setViewBrowse = () => {
