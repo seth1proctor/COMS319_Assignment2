@@ -35,6 +35,11 @@ export function App() {
 
     function Cart() {
 
+        // const onSubmit = data => {
+        //     setDataF(data);
+        //     setView(2);
+        // }
+
         function Payment() {
             const onSubmit = data => {
                 console.log(data); // log all data
@@ -44,9 +49,9 @@ export function App() {
             }
 
             return (
-                <div className="container">
-                    <h1>Payment information</h1>
-                    <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+                <div className="container mx-auto">
+                    <h1 className="text-3xl mb-4">Payment information</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="col-md-6">
                             <label htmlFor="fullName" className="form-label">Full Name</label>
                             <input {...register("fullName", { required: true })} type="text" className="form-control" id="fullName" placeholder="Full Name" />
@@ -243,9 +248,9 @@ export function App() {
         };
 
         return (
-            <div className="container">
-                <h1>Payment Confirmation</h1>
-                <div className="row">
+            <div className="container mx-auto">
+                <h1 className="text-3xl mb-4">Payment Confirmation</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="col-md-6">
                         <h4>Payment Information</h4>
                         <ul className="list-group mb-4">
