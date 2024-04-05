@@ -1,4 +1,4 @@
-import react, {  useState, version, useEffect  } from "react";
+import react, { useState, version, useEffect } from "react";
 import items from './products.json';
 import "bootstrap/dist/css/bootstrap.css";
 import './script.css';
@@ -23,13 +23,15 @@ export function App() {
 
     //helper method to list all of the items in the cart out
     const cartItems = CartList.map((el) => (
-        <div key={el.id}>
-            <img class="img-fluid" src={el.image} width={150} />
-            <p>{el.title} ${formatPrice(el.price)}</p>
+        <div key={el.id} className="d-flex align-items-center mb-3">
+            <img src={el.image} alt={el.title} width={150} className="me-3" />
+            <div>
+                <p className="mb-1">{el.title}</p>
+                <p className="m-0">${formatPrice(el.price)}</p>
+            </div>
         </div>
     ));
 
-    
 
     function Cart() {
 
@@ -92,33 +94,33 @@ export function App() {
             );
         }
 
-        return (<div>
-            <button type="primary" className="btn btn-primary" onClick={setViewBrowse}>Return</button>
+        return (
+            <div className="container">
+                <button type="button" className="btn btn-primary mb-3" onClick={setViewBrowse}>Return</button>
 
-            <div class="col-md-8 cart">
-                <div class="title">
-                    <div class="row">
-                        <div class="col">
-                            <h4>
-                                <b>Shopping Cart</b>
-                            </h4>
-                        </div>
-                        <div class="col align-self-center text-right text-muted">
-                            Products selected {CartList.length}
+                <div className="col-md-8 cart">
+                    <div className="title">
+                        <div className="row">
+                            <div className="col">
+                                <h4><b>Shopping Cart</b></h4>
+                            </div>
+                            <div className="col align-self-center text-right text-muted">
+                                Products selected: {CartList.length}
+                            </div>
                         </div>
                     </div>
+                    {cartItems}
                 </div>
-                <div>{cartItems}</div>
+                <div className="float-end">
+                    <p className="mb-0 me-5 d-flex align-items-center">
+                        <span className="small text-muted me-2">Order total:</span>
+                        <span className="lead fw-normal">${formatPrice(CartTotal)}</span>
+                    </p>
+                </div>
+                <hr className="my-4" />
+                <Payment />
             </div>
-            <div class="float-end">
-                <p class="mb-0 me-5 d-flex align-items-center">
-                    <span class="small text-muted me-2">Order total:</span>
-                    <span class="lead fw-normal">${formatPrice(CartTotal)}</span>
-                </p>
-            </div>
-            <hr className="my-4" />
-            <Payment />
-        </div>)
+        );
     }
 
 
@@ -185,11 +187,11 @@ export function App() {
 
         useEffect(() => {
             total();
-          }, [CartList]);
+        }, [CartList]);
 
         const total = () => {
             let totalValue = 0;
-            for(let i = 0; i < CartList.length; i++){
+            for (let i = 0; i < CartList.length; i++) {
                 totalValue += CartList[i].price;
             }
             setCartTotal(totalValue);
@@ -203,8 +205,8 @@ export function App() {
                     <h1 className="header-title">Luxury Motors Co.</h1>
 
                     <div>
-                        <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                        type="search" value={search} onChange={handleSearch} placeholder="Search"/>
+                        <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            type="search" value={search} onChange={handleSearch} placeholder="Search" />
                     </div>
                     <div>
                         <h3>Total: ${formatPrice(CartTotal)}</h3>
@@ -225,6 +227,8 @@ export function App() {
     }
 
     function Confirm() {
+
+        // Function to redact the first 12 digits of the credit card number
         const redactCreditCard = (creditCard) => {
             // If credit card data is not available or invalid, return empty string
             if (!creditCard || typeof creditCard !== 'string') {
@@ -238,48 +242,56 @@ export function App() {
             return redactedPart + last4Digits;
         };
 
-
-        return (<div className="container">
-            <h1>Payment Confirmation</h1>
-            <div>
-                <p><strong>Full Name:</strong> {dataF.fullName}</p>
-                <p><strong>Email:</strong> {dataF.email}</p>
-                <p><strong>Credit Card:</strong> {redactCreditCard(dataF.creditCard)}</p>
-                <p><strong>Address:</strong> {dataF.address}</p>
-                <p><strong>Address 2:</strong> {dataF.address2}</p>
-                <p><strong>City:</strong> {dataF.city}</p>
-                <p><strong>State:</strong> {dataF.state}</p>
-                <p><strong>Zip:</strong> {dataF.zip}</p>
-
-                <hr className="my-4" />
-
-                <div class="col-md-8 cart">
-                    <div class="title">
-                        <div class="row">
-                            <div class="col">
-                                <h4>
-                                    <b>Shopping Cart</b>
-                                </h4>
-                            </div>
-                            <div class="col align-self-center text-right text-muted">
-                                Products selected {CartList.length}
+        return (
+            <div className="container">
+                <h1>Payment Confirmation</h1>
+                <div className="row">
+                    <div className="col-md-6">
+                        <h4>Payment Information</h4>
+                        <ul className="list-group mb-4">
+                            <li className="list-group-item"><strong>Full Name:</strong> {dataF.fullName}</li>
+                            <li className="list-group-item"><strong>Email:</strong> {dataF.email}</li>
+                            <li className="list-group-item"><strong>Credit Card:</strong> {redactCreditCard(dataF.creditCard)}</li>
+                            <li className="list-group-item"><strong>Address:</strong> {dataF.address}</li>
+                            <li className="list-group-item"><strong>Address 2:</strong> {dataF.address2}</li>
+                            <li className="list-group-item"><strong>City:</strong> {dataF.city}</li>
+                            <li className="list-group-item"><strong>State:</strong> {dataF.state}</li>
+                            <li className="list-group-item"><strong>Zip:</strong> {dataF.zip}</li>
+                        </ul>
+                        <hr />
+                        <button type="button" className="btn btn-primary me-2" onClick={setViewCart}>Edit Payment Information</button>
+                    </div>
+                    <div className="col-md-6">
+                        <h4>Order Summary</h4>
+                        <div className="card">
+                            <div className="card-body">
+                                {CartList.map((item, index) => (
+                                    <div key={index} className="d-flex justify-content-between align-items-center mb-3">
+                                        <div className="d-flex align-items-center">
+                                            <img src={item.image} alt={item.title} className="me-2" style={{ width: "50px" }} />
+                                            <span>{item.title}</span>
+                                        </div>
+                                        <span>${formatPrice(item.price)}</span>
+                                    </div>
+                                ))}
+                                <hr />
+                                <div className="d-flex justify-content-between">
+                                    <strong>Total:</strong>
+                                    <strong>${formatPrice(CartTotal)}</strong>
+                                </div>
                             </div>
                         </div>
+                        <hr />
+                        <div className="text-end">
+                            <button type="button" className="btn btn-primary" onClick={checkout}>Confirm Purchase</button>
+                        </div>
                     </div>
-                    <div>{cartItems}</div>
-                </div>
-                <div class="float-end">
-                    <p class="mb-0 me-5 d-flex align-items-center">
-                        <span class="small text-muted me-2">Order total:</span>
-                        <span class="lead fw-normal"> ${formatPrice(CartTotal)}</span>
-                    </p>
-                </div>
-            </div>
-            <button type="primary" className="btn btn-primary" onClick={checkout}>Confirm Purchase</button>
-            <button type="primary" className="btn btn-primary" onClick={setViewCart}>Edit Payment Information</button>
-            
-        </div>)
 
+                </div>
+
+
+            </div>
+        );
     }
 
     const checkout = () => {
@@ -307,6 +319,6 @@ export function App() {
         {View === 1 && <Cart />}
         {View === 2 && <Confirm />}
     </div>);
-    
+
 
 }
